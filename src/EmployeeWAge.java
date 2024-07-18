@@ -6,15 +6,14 @@ public class EmployeeWAge {
     public static final int NUM_OF_WORKING_DAYS = 2;
     public static final int MAX_HRS_IN_MONTHS = 10;
 
-    public static int computeEmpWage(){
+    public static int computeEmpWage(String company, int empRatePerHrs, int noOfWorkingDays, int maxHoursPerMonth){
         System.out.println("HEELo");
 
         int empHrs=0;
         int totalEmpHrs=0;
         int totalWorkinDays = 0;
 
-        while (totalEmpHrs <= MAX_HRS_IN_MONTHS && totalWorkinDays < NUM_OF_WORKING_DAYS) {
-            totalWorkinDays++;
+        while (totalEmpHrs <= maxHoursPerMonth && totalWorkinDays < noOfWorkingDays) {            totalWorkinDays++;
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch (empCheck) {
                 case IS_PART_TIME:
@@ -28,12 +27,13 @@ public class EmployeeWAge {
             totalEmpHrs += empHrs;
             System.out.println("Day: " + totalWorkinDays + " Emp Hrs: " + empHrs);
         }
-        int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HRS;
-        System.out.println("Total Emp Wage: " + totalEmpWage);
+        int totalEmpWage = totalEmpHrs * empRatePerHrs;
+        System.out.println("Total Emp Wage for company: " + company + " is " + totalEmpWage);
         return totalEmpWage;
     }
 
     public static void main(String[] args) {
-        computeEmpWage();
+        computeEmpWage("Dmart",20,2,10);
+        computeEmpWage("Relaince",10,4,20);
     }
 }
